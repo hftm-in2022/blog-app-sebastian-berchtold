@@ -43,3 +43,11 @@ jobs:
       # Optional: Schritt 7: Führe `npm audit` für Sicherheitschecks aus
       - name: Run Security Audit
         run: npm audit --production
+
+      # Schritt 8: Führe `npm audit` für Sicherheitschecks durch
+      - name: Run Security Audit
+        run: npm audit --production
+
+      # Optional: Sicherheitsprobleme automatisch beheben
+      - name: Fix Vulnerabilities
+        run: npm audit fix
