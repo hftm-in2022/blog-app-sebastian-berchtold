@@ -60,7 +60,7 @@
           - name: Set up Node.js
             uses: actions/setup-node@v2
             with:
-              node-version: '16.x'
+              node-version: '18.x'
           - name: Install dependencies
             run: npm ci
           - name: Build the project
