@@ -1,0 +1,45 @@
+name: CI Pipeline
+
+# Diese Pipeline wird bei jedem Commit auf den "main"-Branch ausgelöst
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Schritt 1: Check out das Repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Schritt 2: Setze Node.js Version (du kannst hier deine Version angeben)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      # Schritt 3: Installiere Projekt-Abhängigkeiten
+      - name: Install dependencies
+        run: npm ci
+
+      # Schritt 4: Baue das Projekt
+      - name: Build the project
+        run: npm run build --if-present
+
+      # Schritt 5: Führe Unit-Tests und Integrations-Tests durch
+      - name: Run Unit Tests
+        run: npm test
+
+      # Schritt 6: Führe `ng update` aus, um Abhängigkeiten zu aktualisieren
+      - name: Run Angular Update
+        run: ng update --all --force
+
+      # Optional: Schritt 7: Führe `npm audit` für Sicherheitschecks aus
+      - name: Run Security Audit
+        run: npm audit --production
