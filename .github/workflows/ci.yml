@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'g
+          node-version: '18.x'
 
       # Schritt 3: Installiere Projekt-Abhängigkeiten
       - name: Install dependencies
