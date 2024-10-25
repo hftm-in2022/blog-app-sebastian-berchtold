@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test" ,
+    "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless" ,
     "serve:ssr:BlogWebApp": "node dist/blog-web-app/server/server.mjs",
     "lint": "ng lint",
     "prepare": "husky install"
