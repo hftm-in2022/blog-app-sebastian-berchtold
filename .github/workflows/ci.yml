@@ -1,6 +1,5 @@
 name: CI Pipeline
 
-# Diese Pipeline wird bei jedem Commit auf den "main"-Branch ausgelöst
 on:
   push:
     branches:

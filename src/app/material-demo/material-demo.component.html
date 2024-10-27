@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-form-field>
+    <mat-label>Enter Name</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="toggleStyle()">Toggle Style</button>
+
+  <div *ngIf="name">
+    <p>Hello, {{ name }}!</p>
+  </div>
+
+  <div [ngSwitch]="status">
+    <p *ngSwitchCase="'active'">Status: Active</p>
+    <p *ngSwitchCase="'inactive'">Status: Inactive</p>
+    <p *ngSwitchDefault>Status: Unknown</p>
+  </div>
+
+  <ul>
+    <li *ngFor="let item of items" [ngClass]="{'highlight': isHighlighted(item)}">
+      {{ item }}
+    </li>
+  </ul>
+
+  <p [ngStyle]="{color: color}">Dynamic style text</p>
+</mat-card>
