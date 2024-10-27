@@ -43,34 +43,36 @@
 1. Create the `.github/workflows/ci.yml` file for the pipeline:
     ```yaml
     name: CI Pipeline
+
     on:
-      push:
-        branches:
-          - main
-      pull_request:
-        branches:
-          - main
+    push:
+      branches:
+        - master
+    pull_request:
+      branches:
+        - master
 
     jobs:
       build-and-test:
         runs-on: ubuntu-latest
-        steps:
-          - name: Checkout repository
-            uses: actions/checkout@v2
-          - name: Set up Node.js
-            uses: actions/setup-node@v2
-            with:
-              node-version: '18.x'
-          - name: Install dependencies
-            run: npm ci
-          - name: Build the project
-            run: npm run build --if-present
-          - name: Run Unit Tests
-            run: npm test
-          - name: Run Angular Update
-            run: ng update --all --force
-          - name: Run Security Audit
-            run: npm audit --production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the project
+        run: npm run build --if-present
+
+      - name: Run Unit Tests
+        run: npm test
     ```
 
 2. Add **Security Audits** to the pipeline:
