@@ -95,3 +95,6 @@ Here is the link to the live deployment:
 1. **Security Audit**: The pipeline will run `npm audit` to ensure that the project is free of known security vulnerabilities.
 2. **Automated Dependency Updates**: With `dependabot` configured, dependencies are updated regularly through automated pull requests.
 
+## 7. Angular Material
+
+For this project I use angular Material for pre designed components.
