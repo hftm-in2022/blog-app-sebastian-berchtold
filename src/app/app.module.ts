@@ -8,21 +8,22 @@ import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { MaterialDemoComponent } from './material-demo/material-demo.component'
 import { CommonModule } from '@angular/common'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MaterialDemoComponent 
   ],
   imports: [
+    AppComponent,
+    MaterialDemoComponent,
     BrowserModule,
     CommonModule,
     FormsModule,
     MatInputModule, // Input field
     MatButtonModule, // Button
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
