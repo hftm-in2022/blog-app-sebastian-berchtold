@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MaterialDemoComponent } from './material-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { BlogServiceService } from '../services/blog-service.service';
 
 describe('MaterialDemoComponent', () => {
   let component: MaterialDemoComponent;
@@ -9,9 +11,13 @@ describe('MaterialDemoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(), 
+        BlogServiceService          
+      ],
       imports: [
         MaterialDemoComponent, 
-        BrowserAnimationsModule // Include animations module if needed
+        BrowserAnimationsModule
       ],
     }).compileComponents();
 

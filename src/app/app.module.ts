@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AppComponent } from './app.component';
 import { MaterialDemoComponent } from './material-demo/material-demo.component'
 import { CommonModule } from '@angular/common'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule, // Button
     MatCardModule,
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: []
 })
 export class AppModule { }
