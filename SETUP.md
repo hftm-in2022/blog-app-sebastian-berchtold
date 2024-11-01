@@ -98,3 +98,9 @@ Here is the link to the live deployment:
 ## 7. Angular Material
 
 For this project I use angular Material for pre designed components.
+
+
+## 8. Backend 
+
+1. **API Endpoint** Integrated backend from Azure API: https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/
+2. **Service for API calls** I've created blogService for calls
