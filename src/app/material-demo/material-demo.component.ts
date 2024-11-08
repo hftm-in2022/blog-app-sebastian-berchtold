@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { Blog } from '../model/blog';
+import { BlogServiceService } from '../services/blog-service.service';
 
 @Component({
   selector: 'app-material-demo',
@@ -30,5 +32,15 @@ export class MaterialDemoComponent {
 
   isHighlighted(item: string) {
     return item.includes('1');
+  }
+
+  blogs: Blog[] = [];
+
+  constructor(private blogService: BlogServiceService) {}
+
+  ngOnInit(): void {
+    this.blogService.getBlogs().subscribe((blogs) => {
+      this.blogs = blogs;
+    });
   }
 }

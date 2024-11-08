@@ -23,4 +23,17 @@
   </ul>
 
   <p [ngStyle]="{color: color}">Dynamic style text</p>
+
+  <div class="blog-list">
+    <div *ngFor="let blog of blogs" class="blog-item">
+      <img *ngIf="blog.headerImageUrl" [src]="blog.headerImageUrl" alt="{{ blog.title }}" class="header-image">
+      <h3>{{ blog.title }}</h3>
+      <p>By {{ blog.author }} on {{ blog.createdAt | date }}</p>
+      <p>{{ blog.contentPreview }}</p>
+      <div class="footer">
+        <span>{{ blog.likes }} Likes</span>
+        <span>{{ blog.comments }} Comments</span>
+      </div>
+    </div>
+  </div>
 </mat-card>
