@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { ErrorHandler, NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms' // Import FormsModule for ngModel
+import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'
 import { MaterialDemoComponent } from './material-demo/material-demo.component'
 import { CommonModule } from '@angular/common'
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http'
+import { GlobalErrorHandler } from './services/error-handler.service'
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     AppComponent,
     MaterialDemoComponent,
@@ -23,7 +23,10 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
     MatButtonModule, // Button
     MatCardModule,
   ],
-  providers: [provideHttpClient()],
-  bootstrap: []
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    provideHttpClient(),
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
