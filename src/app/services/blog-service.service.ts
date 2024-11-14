@@ -17,4 +17,10 @@ export class BlogServiceService {
       map((resp: BlogResponse) => resp.data)
     );
   }
+
+  getBlogById(blogId: string): Observable<Blog> {
+    return this.http.get<Blog>(`${this.apiUrl}/entries/${blogId}`).pipe(
+      map((resp: Blog) => resp)
+    );
+  }
 }
