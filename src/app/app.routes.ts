@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { BlogDetailResolverService } from './resolvers/blog-detail-resolver.service';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,6 @@ export const routes: Routes = [
     path: 'blog/:id',
     loadChildren: () =>
       import('./pages/blog-detail/blog-detail.module').then((m) => m.BlogDetailModule),
-    resolve: { blog: BlogDetailResolver },
+    resolve: { blog: BlogDetailResolverService },
   },
 ];

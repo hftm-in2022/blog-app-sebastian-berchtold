@@ -7,10 +7,10 @@ import { BlogResponse } from '../model/blogResponse';
 @Injectable({
   providedIn: 'root'
 })
-export class BlogServiceService {
+export class BlogService {
   private apiUrl = 'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getBlogs(): Observable<Blog[]> {
     return this.http.get<BlogResponse>(`${this.apiUrl}/entries`).pipe(

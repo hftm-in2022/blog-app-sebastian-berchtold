@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { Blog } from '../model/blog';
-import { BlogServiceService } from '../services/blog-service.service';
+import { BlogService } from '../services/blog-service.service';
 
 @Component({
   selector: 'app-material-demo',
@@ -36,7 +36,7 @@ export class MaterialDemoComponent {
 
   blogs: Blog[] = [];
 
-  constructor(private blogService: BlogServiceService) {}
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.blogService.getBlogs().subscribe((blogs) => {
