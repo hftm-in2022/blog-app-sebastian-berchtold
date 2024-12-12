@@ -104,3 +104,52 @@ For this project I use angular Material for pre designed components.
 
 1. **API Endpoint** Integrated backend from Azure API: https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/
 2. **Service for API calls** I've created blogService for calls
+
+
+## 9. KeyCloak Authentification
+
+1. **Create Module** First a Module for the lazy-component added. 
+    ```bash
+    ng g module features/add-blog-page
+    ```
+
+2. **Routes added** Added route from module
+```typescript
+  {
+    path: 'add-blog',
+    loadChildren: () =>
+      import('./features/add-blog-page/add-blog-page.module').then(
+        (m) => m.AddBlogPageModule
+      ),
+  },
+  ```
+
+3. **OIDC client** To use the Keycloak authentification we need the angular auth oidc client.
+To install the client just 
+```bash
+npm install angular-auth-oidc-client
+```
+
+after that add it to the AppModule as a config.
+
+```ts
+export const oidcConfig = {
+  authority: 'https://<your-keycloak-url>/realms/<your-realm>',
+  clientId: '<your-client-id>',
+  redirectUrl: window.location.origin,
+  postLogoutRedirectUri: window.location.origin,
+  responseType: 'code',
+  scope: 'openid profile roles',
+  silentRenew: true,
+  useRefreshToken: true,
+};
+```
+this is just a template.
+
+4. **Guard function** Guard function added
+Guard function are routes that are being functionally guarded. Its a way to protect the angular application. 
+```bash
+ng g guard guards/is-authenticated --functional
+```
+
+5. **KeyCloak** 

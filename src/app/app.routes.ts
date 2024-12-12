@@ -13,4 +13,11 @@ export const routes: Routes = [
       import('./pages/blog-detail/blog-detail.module').then((m) => m.BlogDetailModule),
     resolve: { blog: BlogDetailResolverService },
   },
+  {
+    path: 'add-blog',
+    loadChildren: () =>
+      import('./features/add-blog-page/add-blog-page.module').then(
+        (m) => m.AddBlogPageModule
+      ),
+  },
 ];
