@@ -10,7 +10,6 @@ import { AuthModule } from 'angular-auth-oidc-client';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { oidcConfig } from './app.config';
 import { GlobalErrorHandler } from './services/error-handler.service';
 
 @NgModule({
@@ -21,13 +20,25 @@ import { GlobalErrorHandler } from './services/error-handler.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    AuthModule.forRoot({ config: oidcConfig }),
+    AuthModule.forRoot({
+      config: {
+        authority: 'http://localhost:8080/auth/realms/blogs',
+        clientId: 'blog',
+        redirectUrl: window.location.origin,
+        postLogoutRedirectUri: window.location.origin,
+        responseType: 'code',
+        scope: 'openid profile email roles',
+        silentRenew: true,
+        useRefreshToken: true,
+      }
+    }),
     RouterModule.forRoot([{ path: "", component: AppComponent }])
 
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     provideHttpClient(withFetch()),
+
   ],
 })
 export class AppModule {
