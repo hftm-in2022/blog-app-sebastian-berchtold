@@ -7,30 +7,50 @@ import { MatInputModule } from '@angular/material/input';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { hasRole } from '../guards/is-authenticated.guard';
 import { Blog } from '../model/blog';
+import { CustomUserData } from '../model/custom-user-data.interface';
 import { BlogService } from '../services/blog-service.service';
 
 @Component({
   selector: 'app-material-demo',
-  standalone: true, // Ensures component can use direct imports
+  standalone: true,
   templateUrl: './material-demo.component.html',
   styleUrls: ['./material-demo.component.scss'],
   imports: [
-    CommonModule, // For *ngIf, *ngFor, and *ngSwitch
-    FormsModule, // For ngModel two-way binding
-    MatInputModule, // For Material input field
-    MatButtonModule, // For Material button
-    MatCardModule // For Material card
-  ]
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
 })
 export class MaterialDemoComponent {
   username = '';
-
+  isAuthenticated = false;
+  userData: CustomUserData | null = null;
+  userRoles: string[] = [];
   blogs: Blog[] = [];
 
-  constructor(private blogService: BlogService, private oidcService: OidcSecurityService) {
-    this.oidcService.userData$.subscribe((userData) => {
-      this.username = userData?.name || '';
+  constructor(
+    private blogService: BlogService,
+    private oidcService: OidcSecurityService
+  ) {
+    this.oidcService.isAuthenticated$.subscribe((auth) => {
+      this.isAuthenticated = auth.isAuthenticated;
     });
+
+    this.oidcService.userData$.subscribe((data: CustomUserData) => {
+      this.userData = data;
+      this.userRoles = data?.realm_access?.roles || [];
+      this.username = data?.name || '';
+    });
+  }
+
+  login() {
+    this.oidcService.authorize();
+  }
+
+  logout() {
+    this.oidcService.logoff();
   }
 
   ngOnInit(): void {
@@ -40,7 +60,6 @@ export class MaterialDemoComponent {
   }
 
   isUser(): boolean {
-    const userRoles = this.oidcService.getUserData()?.roles || [];
-    return hasRole(userRoles, 'user');
+    return hasRole(this.userRoles, 'user');
   }
 }

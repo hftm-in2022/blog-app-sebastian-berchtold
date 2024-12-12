@@ -7,7 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthModule } from 'angular-auth-oidc-client';
 
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { oidcConfig } from './app.config';
 import { GlobalErrorHandler } from './services/error-handler.service';
@@ -20,14 +21,14 @@ import { GlobalErrorHandler } from './services/error-handler.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    AuthModule.forRoot({
-      config: oidcConfig,
-    }),
-    AppComponent,
+    AuthModule.forRoot({ config: oidcConfig }),
+    RouterModule.forRoot([{ path: "", component: AppComponent }])
+
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
   ],
 })
-export class AppModule { }
+export class AppModule {
+}

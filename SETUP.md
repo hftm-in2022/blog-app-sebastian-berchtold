@@ -153,3 +153,5 @@ ng g guard guards/is-authenticated --functional
 ```
 
 5. **KeyCloak** 
+Keycloak has to be setup. Heres a helpful Guide https://blog.ordina-jworks.io/security/2019/08/22/Securing-Web-Applications-With-Keycloak.html#/
+

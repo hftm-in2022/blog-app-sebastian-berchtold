@@ -1,15 +1,12 @@
 <mat-card>
-  <span *ngIf="isAuthenticated()">Welcome, {{ username }}</span>
 
-  <mat-form-field>
-    <mat-label>Enter Name</mat-label>
-    <input matInput [(ngModel)]="name" />
-  </mat-form-field>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
+  <div *ngIf="isAuthenticated">
+    <p>Welcome, {{ userData?.name }}</p>
+    <p>Your roles: {{ userRoles }}</p>
+  </div>
 
-  <button *ngIf="isUser()" routerLink="/add-blog">Add Blog</button>
-
-
-  <button mat-raised-button color="primary" (click)="toggleStyle()">Toggle Style</button>
 
   <div class="blog-list">
     <div *ngFor="let blog of blogs" class="blog-item">

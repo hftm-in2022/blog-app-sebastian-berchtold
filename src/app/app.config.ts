@@ -10,13 +10,15 @@ export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimationsAsync(), provideHttpClient()]
 };
 
+const isBrowser = typeof window !== 'undefined';
+
 export const oidcConfig = {
-  authority: 'https://<your-keycloak-url>/realms/<your-realm>',
-  clientId: '<your-client-id>',
-  redirectUrl: window.location.origin,
-  postLogoutRedirectUri: window.location.origin,
+  authority: 'http://localhost:8080/auth/realms/blogs',
+  clientId: 'blog',
+  redirectUrl: isBrowser ? window.location.origin : 'http://localhost:4200',
+  postLogoutRedirectUri: isBrowser ? window.location.origin : 'http://localhost:4200',
   responseType: 'code',
-  scope: 'openid profile roles',
+  scope: 'openid profile email roles',
   silentRenew: true,
   useRefreshToken: true,
 };
