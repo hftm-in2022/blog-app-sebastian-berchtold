@@ -155,3 +155,8 @@ ng g guard guards/is-authenticated --functional
 5. **KeyCloak** 
 Keycloak has to be setup. Heres a helpful Guide https://blog.ordina-jworks.io/security/2019/08/22/Securing-Web-Applications-With-Keycloak.html#/
 
+For the keycloak application, the azure enviroment is being used. Its not necessary to use azure it also can be achieved through a docker container with keycloak.
+
+## 10. Architecture
+
+Im setting on standalone components instead of ngmodules.
