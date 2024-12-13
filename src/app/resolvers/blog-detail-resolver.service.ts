@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Blog } from '../model/blog';
+import { BlogService } from '../services/blog-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogDetailResolverService {
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Blog> {
-    const blogId = route.paramMap.get('id')!;
-    return this.blogService.getBlogById(blogId);
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Blog[]> {
+    return this.blogService.getBlogs();
   }
 }

@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { AppComponent } from './app.component';
-import { BlogServiceService } from './services/blog-service.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BlogService } from './services/blog-service.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -10,13 +10,12 @@ describe('AppComponent', () => {
     spy.getBlogs.and.returnValue(of([]));  // Mock `getBlogs` to return an empty array
 
     await TestBed.configureTestingModule({
-      imports: [AppComponent,  BrowserAnimationsModule],
+      imports: [AppComponent, BrowserAnimationsModule],
       providers: [
-        { provide: BlogServiceService, useValue: spy }  // Provide the mock BlogService
+        { provide: BlogService, useValue: spy }  // Provide the mock BlogService
       ]
     }).compileComponents();
-
-    const blogServiceSpy = TestBed.inject(BlogServiceService) as jasmine.SpyObj<BlogServiceService>;
+    TestBed.inject(BlogService) as jasmine.SpyObj<BlogService>
   });
 
   it('should create the app', () => {
