@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router, RouterModule } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { map, Observable } from 'rxjs';
 import { Blog } from '../model/blog';
@@ -23,6 +24,7 @@ import { BlogService } from '../services/blog-service.service';
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    RouterModule
   ],
 })
 export class AppHomeComponent implements OnInit {
@@ -35,7 +37,8 @@ export class AppHomeComponent implements OnInit {
 
   constructor(
     private blogService: BlogService,
-    private oidcService: OidcSecurityService
+    private oidcService: OidcSecurityService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,30 +63,50 @@ export class AppHomeComponent implements OnInit {
       this.username = data?.name || '';
     });
 
-    // Fetch blogs
     this.blogService.getBlogs().subscribe({
       next: (blogs) => {
+        console.log('Fetched Blogs:', blogs);
         this.blogs = blogs;
+        console.log('Assigned Blogs:', this.blogs);
         this.isLoading = false;
       },
       error: (err) => {
-        console.error('Error loading blogs:', err);
+        console.error('Error fetching blogs:', err);
         this.isLoading = false;
       },
     });
-  }
-
-  login() {
-    this.oidcService.authorize();
-  }
-
-  logout() {
-    console.log("hello");
-
-    this.oidcService.logoff();
+    /* this.blogs = [
+       {
+         id: "1",
+         title: 'Mock Blog 1',
+         author: 'John Doe',
+         contentPreview: 'This is a preview of the first blog.',
+         createdAt: new Date('2025-01-10T09:58:47'),
+         updatedAt: new Date('2025-01-10T09:58:47'),
+         likes: 10,
+         comments: 2,
+         content: '',
+       },
+       {
+         id: "2",
+         title: 'Mock Blog 2',
+         author: 'Jane Smith',
+         contentPreview: 'This is a preview of the second blog.',
+         createdAt: new Date('2025-01-11T09:58:47'),
+         updatedAt: new Date('2025-01-11T09:58:47'),
+         likes: 5,
+         comments: 1,
+         content: '',
+       },
+     ];*/
+    this.isLoading = false;
   }
 
   isUser(role: string): boolean {
     return this.userRoles.includes(role);
+  }
+
+  navigateToAddBlog(): void {
+    this.router.navigate(['/add-blog']);
   }
 }

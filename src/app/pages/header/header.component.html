@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <span>My Blog App</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/" routerLinkActive="active">Home</button>
+    <button mat-button routerLink="/add-blog" routerLinkActive="active">Add Blog</button>
+    <button mat-button (click)="toggleAuth()">
+        {{ isAuthenticated ? 'Logout' : 'Login' }}
+    </button>
+</mat-toolbar>

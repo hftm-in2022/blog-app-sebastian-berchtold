@@ -1,6 +1,15 @@
-<div class="blog-detail">
-  <h2>{{ blog?.title }}</h2>
-  <p>By {{ blog?.author }} on {{ blog?.publishedDate }}</p>
-  <div [innerHTML]="blog?.content"></div>
-  <button mat-button (click)="goBack()">Zurück zur Übersicht</button>
+<div *ngIf="isLoading" class="spinner">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<div *ngIf="!isLoading && blog" class="blog-detail">
+  <h1>{{ blog?.title }}</h1>
+  <p><strong>By {{ blog?.author }}</strong></p>
+  <p>{{ blog?.createdAt | date }}</p>
+  <img *ngIf="blog.headerImageUrl" [src]="blog?.headerImageUrl" alt="{{ blog?.title }}" />
+  <p>{{ blog?.content }}</p>
+</div>
+
+<div *ngIf="!isLoading && !blog" class="error">
+  <p>Could not load blog details. Please try again later.</p>
 </div>
