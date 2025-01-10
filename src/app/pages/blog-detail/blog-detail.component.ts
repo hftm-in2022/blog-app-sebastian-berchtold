@@ -6,11 +6,10 @@ import { Blog } from '../../model/blog';
 import { BlogService } from '../../services/blog-service.service';
 
 @Component({
-  selector: 'app-blog-detail',
-  templateUrl: './blog-detail.component.html',
-  styleUrls: ['./blog-detail.component.scss'],
-  standalone: true,
-  imports: [CommonModule, MatProgressSpinner]
+    selector: 'app-blog-detail',
+    templateUrl: './blog-detail.component.html',
+    styleUrls: ['./blog-detail.component.scss'],
+    imports: [CommonModule, MatProgressSpinner]
 })
 export class BlogDetailComponent implements OnInit {
   blog: Blog | null = null;

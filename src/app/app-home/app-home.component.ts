@@ -13,19 +13,18 @@ import { CustomUserData } from '../model/custom-user-data.interface';
 import { BlogService } from '../services/blog-service.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  templateUrl: './app-home.component.html',
-  styleUrls: ['./app-home.component.scss'],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    RouterModule
-  ],
+    selector: 'app-home',
+    templateUrl: './app-home.component.html',
+    styleUrls: ['./app-home.component.scss'],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        RouterModule
+    ]
 })
 export class AppHomeComponent implements OnInit {
   username = '';

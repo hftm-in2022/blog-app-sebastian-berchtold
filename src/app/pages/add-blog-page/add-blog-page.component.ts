@@ -7,17 +7,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BlogService } from '../../services/blog-service.service';
 
 @Component({
-  selector: 'app-add-blog-page',
-  templateUrl: './add-blog-page.component.html',
-  styleUrls: ['./add-blog-page.component.scss'],
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-  ],
+    selector: 'app-add-blog-page',
+    templateUrl: './add-blog-page.component.html',
+    styleUrls: ['./add-blog-page.component.scss'],
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatProgressSpinnerModule,
+    ]
 })
 export class AddBlogPageComponent {
   blogForm: FormGroup;
