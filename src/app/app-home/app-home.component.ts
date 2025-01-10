@@ -65,40 +65,13 @@ export class AppHomeComponent implements OnInit {
 
     this.blogService.getBlogs().subscribe({
       next: (blogs) => {
-        console.log('Fetched Blogs:', blogs);
         this.blogs = blogs;
-        console.log('Assigned Blogs:', this.blogs);
         this.isLoading = false;
       },
-      error: (err) => {
-        console.error('Error fetching blogs:', err);
+      error: () => {
         this.isLoading = false;
       },
     });
-    /* this.blogs = [
-       {
-         id: "1",
-         title: 'Mock Blog 1',
-         author: 'John Doe',
-         contentPreview: 'This is a preview of the first blog.',
-         createdAt: new Date('2025-01-10T09:58:47'),
-         updatedAt: new Date('2025-01-10T09:58:47'),
-         likes: 10,
-         comments: 2,
-         content: '',
-       },
-       {
-         id: "2",
-         title: 'Mock Blog 2',
-         author: 'Jane Smith',
-         contentPreview: 'This is a preview of the second blog.',
-         createdAt: new Date('2025-01-11T09:58:47'),
-         updatedAt: new Date('2025-01-11T09:58:47'),
-         likes: 5,
-         comments: 1,
-         content: '',
-       },
-     ];*/
     this.isLoading = false;
   }
 
