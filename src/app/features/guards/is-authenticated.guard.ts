@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { firstValueFrom } from 'rxjs';
-import { CustomUserData } from '../model/custom-user-data.interface';
+import { CustomUserData } from '../../model/custom-user-data.interface'
 
 export const isAuthenticatedGuard: CanActivateFn = async () => {
   const oidcService = inject(OidcSecurityService);
