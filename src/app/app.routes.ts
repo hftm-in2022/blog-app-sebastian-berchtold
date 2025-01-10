@@ -1,15 +1,12 @@
 import { Routes } from '@angular/router';
+import { AppHomeComponent } from './app-home/app-home.component';
+import { AddBlogPageComponent } from './pages/add-blog-page/add-blog-page.component';
+import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 
 export const routes: Routes = [
   {
-    path: 'blogs',
-    loadChildren: () =>
-      import('./pages/blog-list/blog-list.module').then((m) => m.BlogListModule),
+    path: '', component: AppHomeComponent
   },
-  {
-    path: 'blog/:id',
-    loadChildren: () =>
-      import('./pages/blog-detail/blog-detail.module').then((m) => m.BlogDetailModule),
-    resolve: { blog: BlogDetailResolver },
-  },
+  { path: 'blog/:id', component: BlogDetailComponent },
+  { path: 'add-blog', component: AddBlogPageComponent },
 ];

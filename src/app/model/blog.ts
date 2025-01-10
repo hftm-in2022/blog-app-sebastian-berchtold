@@ -1,14 +1,13 @@
 export interface Blog {
-    author: string;
-    comments: number;
-    contentPreview: string;
-    createdAt: string;
-    createdByMe: boolean;
-    id: number;
-    likedByMe: boolean;
-    likes: number;
-    title: string;
-    updatedAt: string;
-    headerImageUrl?: string;
-  }
-  
+  id: string;
+  title: string;
+  author: string;
+  createdAt: Date;
+  updatedAt?: Date;
+  content: string;
+  contentPreview: string;
+  headerImageUrl?: string;
+  tags?: string[];
+  likes?: number;
+  comments?: number;
+}
