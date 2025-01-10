@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BlogService } from '../../services/blog-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-add-blog-page',
@@ -16,6 +17,7 @@ import { BlogService } from '../../services/blog-service.service';
         MatInputModule,
         MatButtonModule,
         MatProgressSpinnerModule,
+        CommonModule
     ]
 })
 export class AddBlogPageComponent {
