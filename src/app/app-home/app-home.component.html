@@ -1,0 +1,33 @@
+<mat-card>
+  <div>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  </div>
+
+  <div *ngIf="isAuthenticated$ | async">
+    <p>Welcome, {{ (userData$ | async)?.name }}</p>
+    <p>Your roles: {{ (userData$ | async)?.realm_access?.roles }}</p>
+  </div>
+
+  <div *ngIf="isLoading" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoading && blogs.length === 0">
+    <p>No blogs available. Start by adding a new blog!</p>
+  </div>
+
+  <div class="blog-list" *ngIf="blogs.length > 0">
+    <div *ngFor="let blog of blogs" class="blog-item" role="article">
+      <img *ngIf="blog.headerImageUrl" [src]="blog.headerImageUrl" alt="{{ blog.title }}" class="header-image"
+        loading="lazy" />
+      <h3>{{ blog.title }}</h3>
+      <p>By {{ blog.author }} on {{ blog.createdAt | date }}</p>
+      <p>{{ blog.contentPreview }}</p>
+      <div class="footer">
+        <span>{{ blog.likes }} Likes</span>
+        <span>{{ blog.comments }} Comments</span>
+      </div>
+    </div>
+  </div>
+</mat-card>

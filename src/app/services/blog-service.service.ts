@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Blog } from '../model/blog';
 import { BlogResponse } from '../model/blogResponse';
 
@@ -14,7 +14,12 @@ export class BlogService {
 
   getBlogs(): Observable<Blog[]> {
     return this.http.get<BlogResponse>(`${this.apiUrl}/entries`).pipe(
-      map((resp: BlogResponse) => resp.data)
+      map((resp: BlogResponse) => resp.data),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching blogs:', error);
+        return throwError(() => new Error('Failed to fetch blogs. Please try again later.'));
+      })
     );
   }
+
 }
