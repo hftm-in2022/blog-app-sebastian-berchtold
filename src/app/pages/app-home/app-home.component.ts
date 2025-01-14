@@ -8,9 +8,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterModule } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { map, Observable } from 'rxjs';
-import { Blog } from '../model/blog';
-import { CustomUserData } from '../model/custom-user-data.interface';
-import { BlogService } from '../services/blog-service.service';
+import { Blog } from '../../model/blog';
+import { CustomUserData } from '../../model/custom-user-data.interface';
+import { BlogService } from '../../services/blog-service.service';
 
 @Component({
   selector: 'app-home',

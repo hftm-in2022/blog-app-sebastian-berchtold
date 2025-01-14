@@ -3,7 +3,7 @@ import { AppHomeComponent } from './app-home.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
-import { BlogService } from '../services/blog-service.service';
+import { BlogService } from '../../services/blog-service.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 describe('AppHomeComponent', () => {

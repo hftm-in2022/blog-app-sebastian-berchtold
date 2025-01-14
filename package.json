@@ -51,10 +51,15 @@
     "jest-preset-angular": "^14.4.2",
     "karma-coverage": "~2.2.0",
     "lint-staged": "^15.2.10",
+    "npm-force-resolutions": "^0.0.10",
     "prettier": "^3.3.3",
     "ts-jest": "^29.2.5",
     "typescript": "~5.5.2",
     "typescript-eslint": "8.10.0"
+  },
+  "resolutions": {
+    "chokidar": "4.0.3",
+    "readdirp": "4.1.1"
   },
   "lint-staged": {
     "*.{ts,html}": "eslint --fix",
