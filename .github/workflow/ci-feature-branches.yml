@@ -3,10 +3,10 @@ name: CI for Feature Branches
 on:
   push:
     branches-ignore:
-      - main # Skip the main branch
+      - master # Skip the main branch
   pull_request:
     branches:
-      - main # Trigger for PRs targeting the main branch
+      - master # Trigger for PRs targeting the main branch
 
 jobs:
   build:
