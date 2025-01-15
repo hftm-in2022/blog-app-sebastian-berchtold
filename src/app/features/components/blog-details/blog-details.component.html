@@ -1,0 +1,10 @@
+<div *ngIf="blog">
+    <h1>{{ blog.title }}</h1>
+    <img [src]="blog.headerImageUrl" alt="Header Image" />
+    <p>{{ blog.content }}</p>
+    <h3>Comments</h3>
+    <div *ngFor="let comment of blog.comments">
+        <p>{{ comment.content }}</p>
+        <small>By: {{ comment.author }} | {{ comment.createdAt | date }}</small>
+    </div>
+</div>
