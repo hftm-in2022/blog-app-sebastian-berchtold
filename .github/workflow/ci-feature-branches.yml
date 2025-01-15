@@ -1,0 +1,36 @@
+name: CI for Feature Branches
+
+on:
+  push:
+    branches-ignore:
+      - main # Skip the main branch
+  pull_request:
+    branches:
+      - main # Trigger for PRs targeting the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the application
+      - name: Build the application
+        run: npm run build
+
+      # Run tests
+      - name: Run tests
+        run: npm test
