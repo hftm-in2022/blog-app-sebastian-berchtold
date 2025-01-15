@@ -1,4 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@media (max-width: 960px) {
+  .sidenav-container mat-sidenav {
+    width: 200px;
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  .blog-card img {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidenav-container mat-sidenav {
+    display: none; /* Hide sidebar for smaller screens */
+  }
+
+  .blog-card img {
+    max-height: 100px;
+  }
+}
+
+html, body {
+  height: 100%; /* Ensure the body occupies the full viewport height */
+  margin: 0;
+  overflow: hidden; /* Prevent scrolling on the body */
+}

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {RouterModule, RouterOutlet} from '@angular/router';
 import {BlogListComponent} from './features/components/blog-list/blog-list.component';
+import {MatToolbar} from '@angular/material/toolbar';
+import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,6 @@ import {BlogListComponent} from './features/components/blog-list/blog-list.compo
   styleUrls: ['./app.component.scss'],
   imports: [
     RouterModule,
-    BlogListComponent
   ]
 })
 export class AppComponent {

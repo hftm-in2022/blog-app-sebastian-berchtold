@@ -1,10 +1,41 @@
-<div *ngIf="blog">
-    <h1>{{ blog.title }}</h1>
-    <img [src]="blog.headerImageUrl" alt="Header Image" />
-    <p>{{ blog.content }}</p>
-    <h3>Comments</h3>
-    <div *ngFor="let comment of blog.comments">
-        <p>{{ comment.content }}</p>
-        <small>By: {{ comment.author }} | {{ comment.createdAt | date }}</small>
-    </div>
+<div class="blog-details">
+    @if (loading) {
+        <div class="loading-container">
+            <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+        </div>
+    }
+
+    @if (errorMessage) {
+        <mat-card class="error-card">
+            <mat-card-content>
+                <p>{{ errorMessage }}</p>
+            </mat-card-content>
+        </mat-card>
+    }
+
+    @if (blog) {
+        <mat-card class="blog-card">
+            <img mat-card-image [src]="blog.headerImageUrl" alt="Blog Image" />
+            <mat-card-title>{{ blog.title }}</mat-card-title>
+            <mat-card-subtitle>By: {{ blog.author }}</mat-card-subtitle>
+            <mat-card-content>
+                <p>{{ blog.content }}</p>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <h3>Comments</h3>
+            <div class="comments">
+                @for (comment of blog.comments; track blog) {
+                    <mat-card class="comment-card">
+                        <mat-card-subtitle>{{ comment.author }}</mat-card-subtitle>
+                        <mat-card-content>
+                            <p>{{ comment.content }}</p>
+                        </mat-card-content>
+                        <mat-card-footer>
+                            <small>{{ comment.createdAt | date: 'medium' }}</small>
+                        </mat-card-footer>
+                    </mat-card>
+                }
+            </div>
+        </mat-card>
+    }
 </div>

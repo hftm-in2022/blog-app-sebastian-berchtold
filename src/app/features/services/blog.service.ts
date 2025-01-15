@@ -28,7 +28,7 @@ export class BlogService {
   }
 
   getBlogById(id: number): Observable<BlogDetails> {
-    return this.http.get<BlogDetails>(`${this.baseUrl}/blogs/${id}`).pipe(
+    return this.http.get<BlogDetails>(`${this.baseUrl}/entries/${id}`).pipe(
         map((blog) => ({
           ...blog,
           createdAt: new Date(blog.createdAt),
