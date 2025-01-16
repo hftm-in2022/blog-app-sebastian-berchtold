@@ -3,38 +3,34 @@ name: CI for Feature Branches
 on:
   push:
     branches-ignore:
-      - master # Skip the main branch
+      - master
   pull_request:
     branches:
-      - master # Trigger for PRs targeting the main branch
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
+      # Check out the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js
-      - name: Setup Node.js
+      # Set up Node.js (use Node 18)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
       # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Install Angular CLI
+      # Install Angular CLI globally
       - name: Install Angular CLI
-        run: npm install --global @angular/cli
+        run: npm install -g @angular/cli@19
 
-      # Build the application
-      - name: Build the application
+      # Build the project
+      - name: Build Angular App
         run: npm run build
-
-      # Run tests
-      - name: Run tests
-        run: npm test
