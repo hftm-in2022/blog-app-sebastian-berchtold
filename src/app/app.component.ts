@@ -1,8 +1,5 @@
-import { Component } from '@angular/core';
-import {RouterModule, RouterOutlet} from '@angular/router';
-import {BlogListComponent} from './features/components/blog-list/blog-list.component';
-import {MatToolbar} from '@angular/material/toolbar';
-import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-root',
