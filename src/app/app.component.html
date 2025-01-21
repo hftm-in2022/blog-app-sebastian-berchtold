@@ -1,5 +1,6 @@
-<app-header></app-header>
-<app-sidebar>
-  <router-outlet></router-outlet>
-</app-sidebar>
-
+<app-header [onMenuToggle]="toggleSidebar"></app-header>
+<app-sidebar
+  [isOpen]="isSidebarOpen"
+  [onClose]="closeSidebar"
+></app-sidebar>
+<router-outlet></router-outlet>

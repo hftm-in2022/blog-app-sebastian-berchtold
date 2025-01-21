@@ -15,5 +15,13 @@ import {HeaderComponent} from './shared/components/header/header.component';
   ]
 })
 export class AppComponent {
-  title = 'BlogWebApp2.0';
+  isSidebarOpen = false;
+
+  toggleSidebar = () => {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  };
+
+  closeSidebar = () => {
+    this.isSidebarOpen = false;
+  };
 }

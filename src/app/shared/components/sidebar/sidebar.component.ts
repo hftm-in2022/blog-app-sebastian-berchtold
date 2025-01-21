@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
@@ -12,6 +12,9 @@ import {RouterModule} from '@angular/router';
   styleUrl: 'sidebar.component.scss'
 })
 export class SidebarComponent {
+  @Input() isOpen = false;
+  @Input() onClose!: () => void;
+
   onLogin() {
     console.log('Login button clicked');
     alert('Login functionality is not implemented yet.');
