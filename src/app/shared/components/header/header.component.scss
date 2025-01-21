@@ -1,0 +1,16 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.menu-icon {
+  display: none;
+}
+@media (max-width: 768px) {
+  .menu-icon {
+    display: inline-flex;
+  }
+}
