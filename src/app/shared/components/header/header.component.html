@@ -8,7 +8,9 @@
   } @else {
     <ng-container>
       <a mat-button routerLink="/blogs-overview" routerLinkActive="active">Overview</a>
-      <button mat-button (click)="onLogin()">Login</button>
+     <!-- @if (!authenticated().isAuthenticated) {-->
+        <button mat-button (click)="login()">Login</button>
+        <button mat-button (click)="logout()">Logout</button>
     </ng-container>
   }
 </mat-toolbar>

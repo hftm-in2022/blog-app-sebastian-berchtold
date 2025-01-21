@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -7,6 +7,7 @@ import {Observable, shareReplay} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
 import {AsyncPipe} from '@angular/common';
+import {OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-header',
@@ -19,25 +20,27 @@ import {AsyncPipe} from '@angular/common';
 })
 export class HeaderComponent {
   @Input() onMenuToggle!: () => void;
+  private readonly oidcSecurityService = inject(OidcSecurityService);
+  protected readonly authenticated = this.oidcSecurityService.authenticated;
 
   isMobile$: Observable<boolean>;
-  isAuthenticated = false;
-  username = '';
-  userRole: string | null = null;
 
   constructor(private readonly breakpointObserver: BreakpointObserver) {
-    // Initialize isMobile$ here to avoid the TS2729 error
     this.isMobile$ = this.breakpointObserver
       .observe([Breakpoints.Small, Breakpoints.Handset])
       .pipe(
         map((result) => result.matches),
         shareReplay()
       );
+    console.log(this.authenticated);
   }
 
-  onLogin() {
-    console.log('Login button clicked');
-    alert('Login functionality is not implemented yet.');
+  login(): void {
+    this.oidcSecurityService.authorize();
+    console.log('authorized')
   }
 
+  logout(): void {
+    this.oidcSecurityService.logoff().subscribe((result) => console.log(result));
+  }
 }

@@ -5,22 +5,12 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app/app.routes';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {provideAuth} from 'angular-auth-oidc-client';
+import { authConfig } from './app/auth/auth.config';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(), provideAnimationsAsync(),
-    provideAuth({
-      config: {
-        authority: 'https://d-cap-keyclaok.kindbay-711f60b2.westeurope.azurecontainerapps.io/realms/blog',
-        redirectUrl: window.location.origin,
-        postLogoutRedirectUri: window.location.origin,
-        clientId: 'spa-blog',
-        scope: 'profile email offline_access blogs',
-        responseType: 'code',
-        silentRenew: true,
-        useRefreshToken: true,
-      },
-    }),
+    provideAuth(authConfig),
   ],
 }).catch((err) => console.error(err));
