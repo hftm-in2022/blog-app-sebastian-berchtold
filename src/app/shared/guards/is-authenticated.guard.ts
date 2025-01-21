@@ -1,20 +1,32 @@
 import {Router} from '@angular/router';
 import {inject} from '@angular/core';
-import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {map, take} from 'rxjs/operators';
+import {AuthService} from '../../features/services/auth.service';
+import {catchError, of} from 'rxjs';
+import {hasRole} from '../../auth/jwt';
 
 export const isAuthenticated = () => {
-  const oidcSecurityService = inject(OidcSecurityService);
+  const authService = inject(AuthService);
   const router = inject(Router);
 
-  return oidcSecurityService.isAuthenticated$.pipe(
+  return authService.getLoginResponse().pipe(
     take(1),
-    map(({isAuthenticated}) => {
-      if (isAuthenticated) {
+    map((loginResponse) => {
+      if (!loginResponse.isAuthenticated) {
+        authService.login();
+        return false;
+      }
+
+      if (hasRole('user', loginResponse.accessToken)) {
         return true;
       }
 
-      return router.parseUrl('/unauthorized');
-    })
+      return router.parseUrl('/blog-overview'); //redirect to blog-overview
+    }),
+    catchError((error) => {
+      console.error('Error in isAuthenticatedGuard:', error);
+      authService.login();
+      return of(false);
+    }),
   );
 };

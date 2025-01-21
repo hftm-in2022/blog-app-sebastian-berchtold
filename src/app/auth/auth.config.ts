@@ -1,16 +1,30 @@
-import {PassedInitialConfig} from 'angular-auth-oidc-client';
+import {LogLevel, PassedInitialConfig} from 'angular-auth-oidc-client';
+import {environment} from '../enviroments/environment';
+
+const redirectUrl = environment.production
+  ? `${environment.appUrl}/blog-overview`
+  : `${window.location.origin}/blog-overview`;
+
+const postLogoutRedirectUri = environment.production
+  ? `${environment.appUrl}/blog-overview`
+  : `${window.location.origin}/blog-overview`;
+
+const silentRenewUrl = environment.production
+  ? `${environment.appUrl}/silent-renew.html`
+  : `${window.location.origin}/silent-renew.html`;
 
 export const authConfig: PassedInitialConfig = {
   config: {
-    authority:
-      'https://d-cap-keyclaok.kindbay-711f60b2.westeurope.azurecontainerapps.io/realms/blog',
-    redirectUrl: window.location.origin,
-    postLogoutRedirectUri: window.location.origin,
+    authority: `${environment.authUrl}/realms/blog`,
+    redirectUrl: redirectUrl,
+    postLogoutRedirectUri: postLogoutRedirectUri,
     clientId: 'spa-blog',
-    scope: 'openid profile email offline_access blogs',
+    scope: 'openid profile email offline_access blogs', // 'openid profile offline_access ' + your scopes
     responseType: 'code',
     silentRenew: true,
-    silentRenewUrl: window.location.origin + '/silent-renew.html',
-    renewTimeBeforeTokenExpiresInSeconds: 10,
+    silentRenewUrl: silentRenewUrl,
+    renewTimeBeforeTokenExpiresInSeconds: 30,
+    logLevel: LogLevel.Debug,
+    secureRoutes: [environment.backendUrl],
   }
 }
