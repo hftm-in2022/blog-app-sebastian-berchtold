@@ -1,8 +1,16 @@
 import {Routes} from '@angular/router';
 import {BlogListComponent} from './features/components/blog-list/blog-list.component';
 import {BlogDetailsComponent} from './features/components/blog-details/blog-details.component';
+import {inject} from '@angular/core';
+import {AddBlogPageComponent} from './features/components/add-blog-page/add-blog-page.component';
+import {isAuthenticated} from './shared/guards/is-authenticated.guard';
 
 export const routes: Routes = [
+  {
+    path: 'protected',
+    component: AddBlogPageComponent,
+    canActivate: [isAuthenticated]
+  },
   {
     path: 'blogs-overview',
     loadComponent: () =>

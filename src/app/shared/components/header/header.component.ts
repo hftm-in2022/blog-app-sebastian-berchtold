@@ -21,6 +21,9 @@ export class HeaderComponent {
   @Input() onMenuToggle!: () => void;
 
   isMobile$: Observable<boolean>;
+  isAuthenticated = false;
+  username = '';
+  userRole: string | null = null;
 
   constructor(private readonly breakpointObserver: BreakpointObserver) {
     // Initialize isMobile$ here to avoid the TS2729 error
@@ -36,4 +39,5 @@ export class HeaderComponent {
     console.log('Login button clicked');
     alert('Login functionality is not implemented yet.');
   }
+
 }
