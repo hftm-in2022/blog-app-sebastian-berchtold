@@ -4,7 +4,14 @@ import {BlogService} from '../../services/blog.service';
 import {ActivatedRoute} from '@angular/router';
 import {DatePipe} from '@angular/common';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import {MatCard, MatCardContent, MatCardFooter, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardFooter,
+  MatCardImage,
+  MatCardSubtitle,
+  MatCardTitle
+} from '@angular/material/card';
 import {MatDivider} from '@angular/material/divider';
 
 @Component({
@@ -18,7 +25,8 @@ import {MatDivider} from '@angular/material/divider';
     MatCardTitle,
     MatCardSubtitle,
     MatCardFooter,
-    MatDivider
+    MatDivider,
+    MatCardImage
   ],
   templateUrl: './blog-details.component.html',
   styleUrl: './blog-details.component.scss'

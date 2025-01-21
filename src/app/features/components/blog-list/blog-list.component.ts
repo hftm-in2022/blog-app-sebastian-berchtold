@@ -3,10 +3,17 @@ import {BlogService} from '../../services/blog.service';
 import {BlogPreview} from '../../models/blogPreview.model';
 import {PaginatedResponse} from '../../models/paginatedResponse.model';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
-import {MatGridList, MatGridTile} from '@angular/material/grid-list';
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardImage,
+  MatCardSubtitle,
+  MatCardTitle
+} from '@angular/material/card';
 import {of} from 'rxjs';
 import {RouterLink} from '@angular/router';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-blog-list',
@@ -18,21 +25,21 @@ import {RouterLink} from '@angular/router';
     MatCardTitle,
     MatCardSubtitle,
     MatCardActions,
-    MatGridList,
-    MatGridTile,
-    MatCardHeader,
-    RouterLink
+    RouterLink,
+    MatCardImage,
+    MatButton
   ],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss'
 })
-export class BlogListComponent implements OnInit{
+export class BlogListComponent implements OnInit {
   blogs: BlogPreview[] = [];
   pagination: Omit<PaginatedResponse<BlogPreview>, 'data'> | null = null;
   loading = true;
   errorMessage: string | null = null;
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService) {
+  }
 
   ngOnInit(): void {
     this.loadBlogs();

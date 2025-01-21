@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import {RouterModule, RouterOutlet} from '@angular/router';
-import {BlogListComponent} from './features/components/blog-list/blog-list.component';
-import {MatToolbar} from '@angular/material/toolbar';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
+import {HeaderComponent} from './shared/components/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +10,8 @@ import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
   styleUrls: ['./app.component.scss'],
   imports: [
     RouterModule,
+    SidebarComponent,
+    HeaderComponent,
   ]
 })
 export class AppComponent {
