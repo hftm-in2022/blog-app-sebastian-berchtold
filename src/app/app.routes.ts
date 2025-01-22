@@ -11,7 +11,7 @@ export const routes: Routes = [
     loadComponent: () =>
         import('./features/components/add-blog-page/add-blog-page.component').then(
             (m) => m.AddBlogPageComponent,
-        ), // Lazy loading for standalone components
+        ),
     canActivate: [isAuthenticated],
   },
   {
