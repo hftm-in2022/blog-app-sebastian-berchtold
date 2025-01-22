@@ -1,5 +1,7 @@
 <mat-toolbar [class.mat-elevation-z3]="true">
-    <span>Blog App</span>
+    <a href="/blogs-overview" style="text-decoration: none; color: inherit">
+        <span>Blog App</span>
+    </a>
     <span class="spacer"></span>
     @if (authenticated()) {
         @if (canAddBlogs()) {
