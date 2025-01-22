@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {BlogDetails} from '../../models/blogDetails.model';
-import {BlogService} from '../../services/blog.service';
+import {BlogDetails} from '../../../core/models/blogDetails.model';
+import {BlogService} from '../../../core/services/blog.service';
 import {ActivatedRoute} from '@angular/router';
 import {DatePipe} from '@angular/common';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';

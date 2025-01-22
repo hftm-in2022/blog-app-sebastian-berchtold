@@ -7,9 +7,12 @@ import {isAuthenticated} from './shared/guards/is-authenticated.guard';
 
 export const routes: Routes = [
   {
-    path: 'protected',
-    component: AddBlogPageComponent,
-    canActivate: [isAuthenticated]
+    path: 'create',
+    loadComponent: () =>
+        import('./features/components/add-blog-page/add-blog-page.component').then(
+            (m) => m.AddBlogPageComponent,
+        ),
+    canActivate: [isAuthenticated],
   },
   {
     path: 'blogs-overview',
@@ -26,6 +29,5 @@ export const routes: Routes = [
       ),
   },
   { path: '', redirectTo: '/blogs-overview', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
 ];
 

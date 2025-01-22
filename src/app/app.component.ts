@@ -1,27 +1,16 @@
 import {Component} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
-import {HeaderComponent} from './shared/components/header/header.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  imports: [
-    RouterModule,
-    SidebarComponent,
-    HeaderComponent,
-  ]
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [
+        RouterModule,
+        SidebarComponent
+    ]
 })
 export class AppComponent {
-  isSidebarOpen = false;
-
-  toggleSidebar = () => {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  };
-
-  closeSidebar = () => {
-    this.isSidebarOpen = false;
-  };
 }

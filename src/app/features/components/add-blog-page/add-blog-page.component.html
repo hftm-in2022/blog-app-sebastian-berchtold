@@ -1,1 +1,23 @@
-<p>add-blog-page works!</p>
+<div class="formContainer">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Create Blog</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form id="form" [formGroup]="blogForm" class="blog-form">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Title</mat-label>
+                    <input formControlName="title" required matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Tell your story...</mat-label>
+                    <textarea formControlName="content" required matInput></textarea>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button color="primary" (click)="resetForm()">Clear</button>
+            <button mat-raised-button color="accent" [disabled]="!blogForm.valid">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
