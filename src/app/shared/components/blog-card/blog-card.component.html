@@ -1,0 +1,32 @@
+@if (entry) {
+    <mat-card class="blog-card" appearance="raised">
+        <mat-card-header>
+            <mat-card-title class="title">{{ entry.title }}</mat-card-title>
+            <mat-card-subtitle class="subtitle">
+                <span>{{ entry.author }}</span>
+                <span>{{ entry.createdAt | date: "dd.MM.yyyy" }}</span>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <img
+                mat-card-image
+                class="card-image"
+                src="{{ entry.headerImageUrl }}"
+                alt="Blog Image"
+                onerror="this.src='https://media.istockphoto.com/id/1452662817/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=bGI_FngX0iexE3EBANPw9nbXkrJJA4-dcEJhCrP8qMw=';"
+        />
+        <mat-card-content>
+            <p>{{ entry.contentPreview }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="icons">
+                <span class="icon"><mat-icon>thumb_up</mat-icon>{{ entry.likes }}</span>
+                <span class="icon"
+                ><mat-icon>comment</mat-icon>{{ entry.comments }}</span
+                >
+            </div>
+            <button (click)="selectBlogEntry(entry)" mat-button>
+                Weiterlesen...
+            </button>
+        </mat-card-actions>
+    </mat-card>
+}
