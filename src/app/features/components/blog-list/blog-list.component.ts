@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {BlogService} from '../../services/blog.service';
-import {BlogPreview} from '../../models/blogPreview.model';
-import {PaginatedResponse} from '../../models/paginatedResponse.model';
+import {BlogService} from '../../../core/services/blog.service';
+import {BlogPreview} from '../../../core/models/blogPreview.model';
+import {PaginatedResponse} from '../../../core/models/paginatedResponse.model';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {
   MatCard,

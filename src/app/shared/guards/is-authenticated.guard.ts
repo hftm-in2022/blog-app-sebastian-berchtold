@@ -1,9 +1,9 @@
 import {Router} from '@angular/router';
 import {inject} from '@angular/core';
 import {map, take} from 'rxjs/operators';
-import {AuthService} from '../../features/services/auth.service';
+import {AuthService} from '../../core/services/auth.service';
 import {catchError, of} from 'rxjs';
-import {hasRole} from '../../auth/jwt';
+import {hasRole} from '../../core/auth/jwt';
 
 export const isAuthenticated = () => {
   const authService = inject(AuthService);

@@ -1,6 +1,6 @@
 import {Component, signal} from '@angular/core';
 import {OidcSecurityService} from 'angular-auth-oidc-client';
-import {UserService} from '../../../features/services/user.service';
+import {UserService} from '../../../core/services/user.service';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatAnchor, MatButton} from '@angular/material/button';
 import {MatMenu, MatMenuTrigger} from '@angular/material/menu';

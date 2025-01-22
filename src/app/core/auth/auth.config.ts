@@ -1,5 +1,5 @@
 import {LogLevel, PassedInitialConfig} from 'angular-auth-oidc-client';
-import {environment} from '../enviroments/environment';
+import {environment} from '../../enviroments/environment';
 /*
 const redirectUrl = environment.production
   ? `${environment.appUrl}/blog-overview`
