@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatButton} from '@angular/material/button';
 import {BlogService} from '../../../core/services/blog.service';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-blog-page',
@@ -30,11 +31,13 @@ export class AddBlogPageComponent {
 
   private formBuilder = inject(FormBuilder);
   private blogService = inject(BlogService);
+  private router = inject(Router);
 
   constructor() {
     this.blogForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
-      content: ['', [Validators.required, Validators.minLength(10)]]
+      content: ['', [Validators.required, Validators.minLength(10)]],
+      headerImageUrl: [''],
     });
   }
 
@@ -49,4 +52,21 @@ export class AddBlogPageComponent {
   resetForm(): void {
     this.blogForm.reset();
   }
+
+  onSubmit(): void{
+    if (this.blogForm.valid){
+      this.isLoading.set(true);
+      this.blogService.createBlog(this.blogForm.value).subscribe({
+        next: () => {
+          this.isLoading.set(false);
+          this.router.navigate(['/']);
+        },
+        error: (err: Error) => {
+          this.isLoading.set(false);
+          console.error('Failed to create blog:', err);
+        },
+      });
+    }
+  }
 }
+
