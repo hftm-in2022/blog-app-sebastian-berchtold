@@ -62,13 +62,9 @@ export class AuthService {
     }
     return '';
   }
-
-  // Method to trigger login
   login(): void {
     this.oidcSecurityService.authorize();
   }
-
-  // Method to trigger logout
   logout() {
     this.oidcSecurityService.logoff().subscribe({
       next: (result) => {

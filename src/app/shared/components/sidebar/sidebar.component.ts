@@ -5,6 +5,9 @@ import {MatToolbar} from '@angular/material/toolbar';
 import {MatAnchor, MatButton} from '@angular/material/button';
 import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
 import {MatIcon} from '@angular/material/icon';
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {MatListItem, MatNavList} from '@angular/material/list';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
     selector: 'app-sidebar',
@@ -14,9 +17,14 @@ import {MatIcon} from '@angular/material/icon';
         MatAnchor,
         MatButton,
         MatMenuTrigger,
-        MatMenu
-        ,
-        MatIcon
+        MatMenu,
+        MatIcon,
+        MatSidenavContainer,
+        MatSidenavContent,
+        MatSidenav,
+        MatNavList,
+        MatListItem,
+        RouterOutlet
     ],
     templateUrl: 'sidebar.component.html',
     styleUrl: 'sidebar.component.scss'

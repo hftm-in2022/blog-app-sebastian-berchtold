@@ -29,6 +29,5 @@ export const routes: Routes = [
       ),
   },
   { path: '', redirectTo: '/blogs-overview', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
 ];
 
