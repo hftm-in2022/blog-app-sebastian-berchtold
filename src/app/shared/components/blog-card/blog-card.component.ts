@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BlogPreview} from '../../../features/models/blogPreview.model';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 import {DatePipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
@@ -15,7 +15,9 @@ import {MatButton} from '@angular/material/button';
         MatIcon,
         DatePipe,
         MatCardImage,
-        MatButton
+        MatButton,
+        MatCardSubtitle,
+        MatCardTitle
     ],
     standalone: true,
     templateUrl: './blog-card.component.html',

@@ -11,6 +11,6 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(), provideAnimationsAsync(),
-    provideAuth(authConfig),
+    provideAuth(authConfig), provideAnimationsAsync(),
   ],
 }).catch((err) => console.error(err));

@@ -1,33 +1,25 @@
 import {Component, signal} from '@angular/core';
-import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
-import {MatListItem, MatNavList} from '@angular/material/list';
-import {MatToolbar} from '@angular/material/toolbar';
-import {MatIcon} from '@angular/material/icon';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {MatIconButton} from '@angular/material/button';
 import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {UserService} from '../../../features/services/user.service';
+import {MatToolbar} from '@angular/material/toolbar';
+import {MatAnchor, MatButton} from '@angular/material/button';
 import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
     selector: 'app-sidebar',
     standalone: true,
     imports: [
-        MatSidenavContainer,
-        MatSidenavContent,
-        MatNavList,
-        MatSidenav,
         MatToolbar,
-        MatIcon,
-        RouterOutlet,
-        MatIconButton,
-        MatListItem,
-        RouterLink,
+        MatAnchor,
+        MatButton,
         MatMenuTrigger,
         MatMenu
+        ,
+        MatIcon
     ],
-    templateUrl: './sidebar.component.html',
-    styleUrl: './sidebar.component.scss'
+    templateUrl: 'sidebar.component.html',
+    styleUrl: 'sidebar.component.scss'
 })
 export class SidebarComponent {
     authenticated = signal<boolean>(false);

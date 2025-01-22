@@ -8,12 +8,10 @@
                 <span>Blogeintrag erstellen</span>
             </a>
         }
-
         <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>person</mat-icon>
             <span>{{ userName() }}</span>
         </button>
-
         <mat-menu #menu="matMenu">
             <button (click)="logout()" mat-button>
                 <mat-icon>logout</mat-icon>

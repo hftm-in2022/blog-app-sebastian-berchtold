@@ -20,16 +20,11 @@ import {BlogCardComponent} from '../../../shared/components/blog-card/blog-card.
   selector: 'app-blog-list',
   standalone: true,
   imports: [
+    BlogCardComponent,
     MatProgressSpinner,
     MatCard,
-    MatCardContent,
-    MatCardTitle,
-    MatCardSubtitle,
-    MatCardActions,
-    RouterLink,
-    MatCardImage,
-    MatButton,
-    BlogCardComponent
+    MatCardContent
+
   ],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss'
