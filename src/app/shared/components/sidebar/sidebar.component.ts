@@ -1,13 +1,14 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, ViewChild} from '@angular/core';
 import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {UserService} from '../../../core/services/user.service';
 import {MatIcon} from '@angular/material/icon';
 import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
-import {MatNavList} from '@angular/material/list';
 import {RouterOutlet} from '@angular/router';
-import {MatAnchor} from '@angular/material/button';
+import {MatAnchor, MatButton} from '@angular/material/button';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
+import {MatToolbar} from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,19 +18,26 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
     NavigationBarComponent,
     MatSidenavContainer,
     MatSidenav,
-    MatNavList,
     RouterOutlet,
     MatSidenavContent,
-    MatAnchor
+    MatAnchor,
+    MatButton,
+    MatMenu,
+    MatMenuTrigger,
+    MatToolbar
   ],
   templateUrl: 'sidebar.component.html',
   styleUrl: 'sidebar.component.scss'
 })
 export class SidebarComponent {
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
   authenticated = signal<boolean>(false);
   userName = signal<string>('');
   canAddBlogs = signal<boolean>(false);
   isMobile = false;
+  events: string[] = [];
+  opened = false;
   private oidcSecurityService = inject(OidcSecurityService);
   private userService = inject(UserService);
   private breakpointObserver = inject(BreakpointObserver);
@@ -56,5 +64,9 @@ export class SidebarComponent {
 
   logout() {
     this.oidcSecurityService.logoff().subscribe();
+  }
+
+  toggleSidenav() {
+    this.sidenav.toggle(); // Toggle the sidenav open/close
   }
 }

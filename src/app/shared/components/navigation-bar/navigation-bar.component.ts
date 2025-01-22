@@ -1,5 +1,5 @@
-import {Component, inject, signal} from '@angular/core';
-import {MatAnchor, MatButton} from "@angular/material/button";
+import {Component, EventEmitter, inject, Output, signal} from '@angular/core';
+import {MatAnchor, MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 import {MatToolbar} from "@angular/material/toolbar";
@@ -15,16 +15,20 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
     MatIcon,
     MatMenu,
     MatToolbar,
-    MatMenuTrigger
+    MatMenuTrigger,
+    MatIconButton
   ],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.scss'
 })
 export class NavigationBarComponent {
+  @Output() toggleSidenav = new EventEmitter<void>();
+
   authenticated = signal<boolean>(false);
   userName = signal<string>('');
   canAddBlogs = signal<boolean>(false);
   isMobile = false;
+
   private oidcSecurityService = inject(OidcSecurityService);
   private userService = inject(UserService);
   private breakpointObserver = inject(BreakpointObserver);
@@ -51,5 +55,10 @@ export class NavigationBarComponent {
 
   logout() {
     this.oidcSecurityService.logoff().subscribe();
+  }
+
+
+  onToggleSidenav() {
+    this.toggleSidenav.emit(); // Emit the toggle event
   }
 }
