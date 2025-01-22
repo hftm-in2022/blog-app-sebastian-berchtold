@@ -1,31 +1,26 @@
 import {Component, inject, signal} from '@angular/core';
+import {MatAnchor, MatButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
+import {MatToolbar} from "@angular/material/toolbar";
 import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {UserService} from '../../../core/services/user.service';
-import {MatIcon} from '@angular/material/icon';
-import {NavigationBarComponent} from '../navigation-bar/navigation-bar.component';
-import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
-import {MatNavList} from '@angular/material/list';
-import {RouterOutlet} from '@angular/router';
-import {MatAnchor} from '@angular/material/button';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
+  selector: 'app-navigation-bar',
   imports: [
+    MatAnchor,
+    MatButton,
     MatIcon,
-    NavigationBarComponent,
-    MatSidenavContainer,
-    MatSidenav,
-    MatNavList,
-    RouterOutlet,
-    MatSidenavContent,
-    MatAnchor
+    MatMenu,
+    MatToolbar,
+    MatMenuTrigger
   ],
-  templateUrl: 'sidebar.component.html',
-  styleUrl: 'sidebar.component.scss'
+  templateUrl: './navigation-bar.component.html',
+  styleUrl: './navigation-bar.component.scss'
 })
-export class SidebarComponent {
+export class NavigationBarComponent {
   authenticated = signal<boolean>(false);
   userName = signal<string>('');
   canAddBlogs = signal<boolean>(false);
