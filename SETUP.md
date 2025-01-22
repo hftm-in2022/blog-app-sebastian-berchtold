@@ -100,7 +100,7 @@ Here is the link to the live deployment:
 For this project I use angular Material for pre designed components.
 
 
-## 8. Backend 
+## 8. Backend
 
 1. **API Endpoint** Integrated backend from Azure API: https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/
 2. **Service for API calls** I've created blogService for calls
@@ -108,7 +108,7 @@ For this project I use angular Material for pre designed components.
 
 ## 9. KeyCloak Authentification
 
-1. **Create Module** First a Module for the lazy-component added. 
+1. **Create Module** First a Module for the lazy-component added.
     ```bash
     ng g module features/add-blog-page
     ```
@@ -125,7 +125,7 @@ For this project I use angular Material for pre designed components.
   ```
 
 3. **OIDC client** To use the Keycloak authentification we need the angular auth oidc client.
-To install the client just 
+   To install the client just
 ```bash
 npm install angular-auth-oidc-client
 ```
@@ -147,13 +147,13 @@ export const oidcConfig = {
 this is just a template.
 
 4. **Guard function** Guard function added
-Guard function are routes that are being functionally guarded. Its a way to protect the angular application. 
+   Guard function are routes that are being functionally guarded. Its a way to protect the angular application.
 ```bash
 ng g guard guards/is-authenticated --functional
 ```
 
-5. **KeyCloak** 
-Keycloak has to be setup. Heres a helpful Guide https://blog.ordina-jworks.io/security/2019/08/22/Securing-Web-Applications-With-Keycloak.html#/
+5. **KeyCloak**
+   Keycloak has to be setup. Heres a helpful Guide https://blog.ordina-jworks.io/security/2019/08/22/Securing-Web-Applications-With-Keycloak.html#/
 
 For the keycloak application, the azure enviroment is being used. Its not necessary to use azure it also can be achieved through a docker container with keycloak.
 

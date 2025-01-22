@@ -1,0 +1,19 @@
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+}
+:host {
+  display: block;
+  height: 100%;
+  overflow-y: auto; /* Enables scrolling */
+}
