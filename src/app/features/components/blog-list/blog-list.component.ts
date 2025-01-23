@@ -1,19 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogService} from '../../../core/services/blog.service';
 import {BlogPreview} from '../../../core/models/blogPreview.model';
-import {PaginatedResponse} from '../../../core/models/paginatedResponse.model';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
-import {
-  MatCard,
-  MatCardActions,
-  MatCardContent,
-  MatCardImage,
-  MatCardSubtitle,
-  MatCardTitle
-} from '@angular/material/card';
+import {MatCard, MatCardContent} from '@angular/material/card';
 import {of} from 'rxjs';
-import {Router, RouterLink} from '@angular/router';
-import {MatButton} from '@angular/material/button';
+import {Router} from '@angular/router';
 import {BlogCardComponent} from '../../../shared/components/blog-card/blog-card.component';
 
 @Component({
@@ -31,11 +22,10 @@ import {BlogCardComponent} from '../../../shared/components/blog-card/blog-card.
 })
 export class BlogListComponent implements OnInit {
   blogs: BlogPreview[] = [];
-  pagination: Omit<PaginatedResponse<BlogPreview>, 'data'> | null = null;
   loading = true;
   errorMessage: string | null = null;
 
-  constructor(private blogService: BlogService,  private router: Router) {
+  constructor(private blogService: BlogService, private router: Router) {
   }
 
   ngOnInit(): void {
