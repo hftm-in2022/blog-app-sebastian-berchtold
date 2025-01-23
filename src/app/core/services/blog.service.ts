@@ -13,7 +13,7 @@ import {environment} from '../../enviroments/environment';
 })
 export class BlogService {
   private oidcSecurityService = inject(OidcSecurityService);
-  private baseUrl = 'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/';
+  baseUrl = 'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io/';
 
 
   constructor(private http: HttpClient) {
