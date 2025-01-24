@@ -1,32 +1,23 @@
 import { TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 import { AppComponent } from './app.component';
-import { BlogService } from './services/blog-service.service';
+import {provideHttpClient} from '@angular/common/http';
+import {provideAuth} from 'angular-auth-oidc-client';
+import {authConfig} from './core/auth/auth.config';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
-    const spy = jasmine.createSpyObj('BlogService', ['getBlogs']);
-    spy.getBlogs.and.returnValue(of([]));  // Mock `getBlogs` to return an empty array
-
     await TestBed.configureTestingModule({
-      imports: [AppComponent, BrowserAnimationsModule],
-      providers: [
-        { provide: BlogService, useValue: spy }  // Provide the mock BlogService
-      ]
+      imports: [AppComponent],
+      providers: [provideHttpClient(),
+        provideAuth(authConfig),
+        provideAnimations()],
     }).compileComponents();
-    TestBed.inject(BlogService) as jasmine.SpyObj<BlogService>
   });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it('should have the title "BlogWebApp"', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('BlogWebApp');
   });
 });

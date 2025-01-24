@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
+import {Component} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {SidebarComponent} from './shared/components/sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [MatToolbarModule, RouterModule, SidebarComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [
-  ]
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [
+        RouterModule,
+        SidebarComponent
+    ]
 })
 export class AppComponent {
-  title = 'BlogWebApp';
 }

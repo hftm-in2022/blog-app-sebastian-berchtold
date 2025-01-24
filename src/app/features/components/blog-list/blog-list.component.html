@@ -1,0 +1,21 @@
+<div class="blog-list">
+    @if (!loading && blogs.length > 0) {
+        <div class="blog-grid">
+            @for (blog of blogs; track blog.id) {
+               <app-blog-card
+               class="blog-card"
+               [entry]="blog"
+               (selectBlog)="goToBlog($event)">
+               </app-blog-card>
+            }
+        </div>
+    }
+    @if (loading) {
+        <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+    }
+    @if (!loading && blogs.length === 0) {
+        <mat-card>
+            <mat-card-content>No blogs found.</mat-card-content>
+        </mat-card>
+    }
+</div>
