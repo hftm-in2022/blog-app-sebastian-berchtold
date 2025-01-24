@@ -160,3 +160,7 @@ For the keycloak application, the azure enviroment is being used. Its not necess
 ## 10. Architecture
 
 Im setting on standalone components instead of ngmodules.
+
+## 11. Testing
+
+For testing im using jasmine and with each component theres is being a basic test generated. 
