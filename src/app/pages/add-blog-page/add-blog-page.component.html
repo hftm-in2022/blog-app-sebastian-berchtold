@@ -23,6 +23,6 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="blogForm.invalid || isLoading">
             {{ isLoading ? 'Saving...' : 'Save Blog' }}
         </button>
-        <button mat-button type="button" (click)="blogForm.reset()">Reset</button>
+        <button mat-button type="button" (click)="blogForm.reset()">Reset</button>  <!-- besser mit button type reset -->
     </div>
 </form>

@@ -14,14 +14,14 @@ import { BlogService } from '../../services/blog-service.service';
 })
 export class BlogDetailComponent implements OnInit {
   blog: Blog | null = null;
-  isLoading = true;
+  isLoading = true;  // state management verwenden
 
   constructor(private route: ActivatedRoute, private blogService: BlogService) { }
 
   ngOnInit(): void {
     const blogId = this.route.snapshot.paramMap.get('id'); // Get blog ID from route params
     if (blogId) {
-      this.blogService.getBlogById(blogId).subscribe({
+      this.blogService.getBlogById(blogId).subscribe({ // unsubscribe!
         next: (data) => {
           this.blog = data;
           this.isLoading = false;

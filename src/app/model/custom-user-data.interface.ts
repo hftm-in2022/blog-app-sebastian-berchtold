@@ -1,4 +1,4 @@
-export interface CustomUserData {
+export interface CustomUserData {  // type alias verwenden anstelle interfaces
     realm_access?: {
         roles: string[];
     };

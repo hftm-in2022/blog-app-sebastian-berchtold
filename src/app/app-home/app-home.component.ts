@@ -36,20 +36,20 @@ export class AppHomeComponent implements OnInit {
   userRoles: string[] = [];
 
   constructor(
-    private blogService: BlogService,
+    private blogService: BlogService,   // inject method verwenden anstelle constructor injection
     private oidcService: OidcSecurityService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.oidcService.checkAuth().subscribe({
+    this.oidcService.checkAuth().subscribe({  // subscribe ohne unsubscribe
       next: (authResult) => {
         console.log('Auth Result:', authResult);
         console.log('Is Authenticated', authResult.isAuthenticated);
 
       },
       error: (err) => {
-        console.error('Error during checkAuth:', err);
+        console.error('Error during checkAuth:', err);   // keine logs in produktivem code
       },
     });
 
@@ -63,7 +63,7 @@ export class AppHomeComponent implements OnInit {
       this.username = data?.name || '';
     });
 
-    this.blogService.getBlogs().subscribe({
+    this.blogService.getBlogs().subscribe({ // subscribe ohne unsubscribe
       next: (blogs) => {
         this.blogs = blogs;
         this.isLoading = false;
@@ -75,7 +75,7 @@ export class AppHomeComponent implements OnInit {
     this.isLoading = false;
   }
 
-  isUser(role: string): boolean {
+  isUser(role: string): boolean {   // wo wird das benutzt?
     return this.userRoles.includes(role);
   }
 

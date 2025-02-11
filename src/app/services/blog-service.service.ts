@@ -7,7 +7,7 @@ import { Blog } from '../model/blog';
   providedIn: 'root',
 })
 export class BlogService {
-  private apiUrl = 'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io';
+  private apiUrl = 'https://d-cap-blog-backend---v2.whitepond-b96fee4b.westeurope.azurecontainerapps.io';  // environments oder config verwenden
 
   constructor(private http: HttpClient) { }
 

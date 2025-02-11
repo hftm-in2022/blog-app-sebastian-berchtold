@@ -48,7 +48,7 @@ export class AddBlogPageComponent {
     this.isLoading = true;
     const newBlog = this.blogForm.value;
 
-    this.blogService.createBlog(newBlog).subscribe({
+    this.blogService.createBlog(newBlog).subscribe({  // subscribe ohne unsubscribe
       next: () => {
         this.isLoading = false;
         alert('Blog saved successfully!');
